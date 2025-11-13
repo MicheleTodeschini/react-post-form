@@ -15,6 +15,8 @@ function App() {
 
    const [formData, setFormData] = useState(InitialFormData)
 
+  const [message, setMessage] = useState('')
+
    /*function handleSubmit(e) {
     e.preventdefault()
     console.log(formData);
@@ -29,18 +31,25 @@ function App() {
   }*/
  function handleSubmit(e){
   e.preventDefault();
-  console.log('cioa')
    axios.post(endpoint, formData, {
       headers: {'content-type' : 'application/json'}
     }).then((res)=>{
       console.log(res)
-      setFormData(InitialFormData)
+        if(res.status === 201){
+        setMessage('Articolo inviato con successo')
+      }
+      setFormData(initialFormData)
+    })
+    .catch(err => {
+      console.log(err.message);
+      
     })
  }
 
   return (
     <>
       <h1>Scrivi il tuo articolo</h1>
+       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label  className="form-label">Autore</label>
@@ -70,8 +79,8 @@ function App() {
           type="text" 
           className="form-control" 
           name='body'
-          value={FormData.body}
-          required
+          value={formData.body}
+          
           onChange={(e) => setFormData({...formData, name: e.target.value})}
           />
         </div>
@@ -82,7 +91,7 @@ function App() {
           name='public'
           className="" 
           value={formData.public}
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({...formData, name: e.target.checked})}
           >
           
           </input>
