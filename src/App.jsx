@@ -14,11 +14,10 @@ function App() {
   }
 
    const [formData, setFormData] = useState({
-    name: '',
-    language: '',
-    urgency: 'low',
-    updates: false,
-    description: ''
+    author: '',
+    title: '',
+    body: '',
+    public: false
 
   })
 
@@ -37,21 +36,29 @@ function App() {
     onChange={(e) => setFormData({...formData, name: e.target.value})}
     />
   </div>
-  <div className="mb-3">
-    <label className="form-label">Titolo dell'articolo</label>
-    <input type="text"
-    className="form-control"
+  <div class="mb-3">
+    <label  className="form-label">Titolo</label>
+    <input 
+    type="text" 
+    className="form-control" 
     name='title'
-    onChange={(e) => setFormData({...formData, name:e.target.value})}
-     />
+    value={FormData.title}
+    required
+    onChange={(e) => setFormData({...formData, name: e.target.value})}
+    />
   </div>
   <div class="mb-3">
     <label  className="form-label">Scrivi qui il tuo articolo</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    <input type="text"
+     className="form-control" 
+     name='body'
+     value={formData.body}
+     required
+     onChange={(e) => setFormData({...formData, name: e.target.value})}
+     />
   </div>
   <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" for="exampleCheck1">Check me out</label>
+    <p>radio button quo</p>
   </div>
   <button type="submit" className="btn btn-primary">Submit</button>
   </form>
