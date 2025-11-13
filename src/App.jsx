@@ -13,13 +13,20 @@ function App() {
     public: false
   }
 
-   const [formData, setFormData] = useState({
-    author: '',
-    title: '',
-    body: '',
-    public: false
+   const [formData, setFormData] = useState(InitialFormData)
 
-  })
+   function handleSubmit(e) {
+    e.preventdefault()
+    console.log(formData);
+
+    axios.post(endpoint, formData, {
+      headers: {'content-type' : 'application/json'}
+    })
+   .then(response=>{
+    console.log(response);
+    
+   })
+  }
 
   return (
     <>
@@ -49,18 +56,29 @@ function App() {
   </div>
   <div class="mb-3">
     <label  className="form-label">Scrivi qui il tuo articolo</label>
-    <input type="text"
-     className="form-control" 
-     name='body'
-     value={formData.body}
-     required
-     onChange={(e) => setFormData({...formData, name: e.target.value})}
+    <input 
+    type="text" 
+    className="form-control" 
+    name='body'
+    value={FormData.body}
+    required
+    onChange={(e) => setFormData({...formData, name: e.target.value})}
      />
   </div>
   <div className="mb-3 form-check">
-    <p>radio button quo</p>
+    <label  className="form-label">Spunta se vuoi renderlo pubblico, sennò rimarrà come bozza privata</label>
+    <input
+    type='checkbox'
+    name='public'
+    className="" 
+    value={formData.public}
+    onChange={(e) => setFormData({...formData, name: e.target.value})}
+    >
+    
+    </input>
+
   </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary" onSubmit={handleSubmit} >Submit</button>
   </form>
 
     </>

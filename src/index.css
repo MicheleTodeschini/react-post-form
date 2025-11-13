@@ -1,2 +1,13 @@
 @import url('bootstrap');
 @import url('bootstrap-icons');
+
+.centrale {
+}
+
+label {
+    text-align: left;
+}
+
+.form-control {
+    border-color: red;
+}
