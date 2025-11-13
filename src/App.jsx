@@ -31,7 +31,7 @@ function App() {
   return (
     <>
       <h1>Scrivi il tuo articolo</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
   <div class="mb-3">
     <label  className="form-label">Autore</label>
     <input 
@@ -78,7 +78,7 @@ function App() {
     </input>
 
   </div>
-  <button type="submit" className="btn btn-primary" onSubmit={handleSubmit} >Submit</button>
+  <button type="submit" className="btn btn-primary"  >Submit</button>
   </form>
 
     </>
