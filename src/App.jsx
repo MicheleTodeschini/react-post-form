@@ -24,7 +24,7 @@ function App() {
     })
    .then(response=>{
     console.log(response);
-    
+    setFormData(InitialFormData)
    })
   }
 
