@@ -59,7 +59,7 @@ function App() {
           name='author'
           value={FormData.author}
           required
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({...formData, author: e.target.value})}
           />
         </div>
         <div className="mb-3">
@@ -70,7 +70,7 @@ function App() {
           name='title'
           value={FormData.title}
           required
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({...formData, title: e.target.value})}
           />
         </div>
         <div className="mb-3">
@@ -79,9 +79,9 @@ function App() {
           type="text" 
           className="form-control" 
           name='body'
-          value={formData.body}
+          value={FormData.body}
           
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({...formData, body: e.target.value})}
           />
         </div>
         <div className="mb-3 form-check">
@@ -91,7 +91,7 @@ function App() {
           name='public'
           className="" 
           value={formData.public}
-          onChange={(e) => setFormData({...formData, name: e.target.checked})}
+          onChange={(e) => setFormData({...formData, public: e.target.checked})}
           >
           
           </input>
